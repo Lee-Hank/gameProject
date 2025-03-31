@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1742638108 source:d:\downloads\test\codeblock\test\board.cpp
+	"Board.h"
+	<algorithm>
+	<ctime>
+
+1743323664 d:\downloads\test\codeblock\test\board.h
+	<vector>
+	<SDL.h>
+	<deque>
+	<utility>
+
+1743237455 source:d:\downloads\test\codeblock\test\game.cpp
+	"Game.h"
+	"Menu.h"
+	<SDL_image.h>
+	<cstdio>
+
+1743237455 d:\downloads\test\codeblock\test\game.h
+	<SDL.h>
+	"BoardView.h"
+	"Menu.h"
+
+1743323664 d:\downloads\test\codeblock\test\boardview.h
+	<SDL.h>
+	<vector>
+	"Board.h"
+	"Graphics.h"
+
+1743237432 d:\downloads\test\codeblock\test\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+
+1742975802 d:\downloads\test\codeblock\test\menu.h
+	<SDL.h>
+	<SDL_image.h>
+
+1743237432 source:d:\downloads\test\codeblock\test\graphics.cpp
+	"Graphics.h"
+
+1743236389 source:d:\downloads\test\codeblock\test\main.cpp
+	"Game.h"
+
+1743236581 source:d:\downloads\test\codeblock\test\menu.cpp
+	"Menu.h"
+	"Graphics.h"
+
+1743324185 source:d:\downloads\test\codeblock\test\boardview.cpp
+	"BoardView.h"
+
+1742638108 source:d:\downloads\test\codeblock\test\gameproject\board.cpp
+	"Board.h"
+	<algorithm>
+	<ctime>
+
+1743323664 d:\downloads\test\codeblock\test\gameproject\board.h
+	<vector>
+	<SDL.h>
+	<deque>
+	<utility>
+
+1743324185 source:d:\downloads\test\codeblock\test\gameproject\boardview.cpp
+	"BoardView.h"
+
+1743323664 d:\downloads\test\codeblock\test\gameproject\boardview.h
+	<SDL.h>
+	<vector>
+	"Board.h"
+	"Graphics.h"
+
+1743427168 d:\downloads\test\codeblock\test\gameproject\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+
+1743237432 source:d:\downloads\test\codeblock\test\gameproject\graphics.cpp
+	"Graphics.h"
+
+1743236389 source:d:\downloads\test\codeblock\test\gameproject\main.cpp
+	"Game.h"
+
+1743237455 d:\downloads\test\codeblock\test\gameproject\game.h
+	<SDL.h>
+	"BoardView.h"
+	"Menu.h"
+
+1742975802 d:\downloads\test\codeblock\test\gameproject\menu.h
+	<SDL.h>
+	<SDL_image.h>
+
+1743236581 source:d:\downloads\test\codeblock\test\gameproject\menu.cpp
+	"Menu.h"
+	"Graphics.h"
+
+1743426684 source:d:\downloads\test\codeblock\test\gameproject\game.cpp
+	"Game.h"
+	"Menu.h"
+	<SDL_image.h>
+	<cstdio>
+
