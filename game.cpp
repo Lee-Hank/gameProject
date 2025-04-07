@@ -64,7 +64,6 @@ bool Game::init(const char* title, int width, int height) {
 void Game::run() {
     while (isRunning) {
         processEvents();
-        update();
         render();
     }
 }
@@ -78,9 +77,6 @@ void Game::processEvents() {
             boardView->handleEvent(event);
         }
     }
-}
-
-void Game::update() {
 }
 
 void Game::render() {

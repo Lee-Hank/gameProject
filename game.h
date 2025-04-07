@@ -24,7 +24,6 @@ public:
     bool init(const char* title, int width, int height);
     void run();
     void processEvents();
-    void update();
     void render();
     void cleanup();
 };
