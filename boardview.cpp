@@ -73,20 +73,15 @@ void BoardView::render() {
     }
 
     if (selectedX != -1 && selectedY != -1) {
-        SDL_Rect highlightRect = { offsetX + selectedY * cellSize, offsetY + selectedX * cellSize, cellSize, cellSize };
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-        SDL_RenderDrawRect(renderer, &highlightRect);
+        Graphics::drawBorder(renderer,
+        offsetX + selectedY * cellSize,
+        offsetY + selectedX * cellSize,
+        cellSize, cellSize,
+        {0, 255, 0, 255});
     }
 
     if (!path.empty() && SDL_GetTicks() - pathStartTime < 500) {
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        for (size_t i = 0; i < path.size() - 1; ++i) {
-            int x1 = offsetX + (path[i].second - 1) * cellSize + cellSize / 2;
-            int y1 = offsetY + (path[i].first - 1) * cellSize + cellSize / 2;
-            int x2 = offsetX + (path[i + 1].second - 1) * cellSize + cellSize / 2;
-            int y2 = offsetY + (path[i + 1].first - 1) * cellSize + cellSize / 2;
-            SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-        }
+        Graphics::drawPath(renderer, path, cellSize, offsetX, offsetY, {255, 0, 0, 255});
     } else {
         path.clear();
     }
@@ -95,9 +90,11 @@ void BoardView::render() {
 
 void BoardView::handleEvent(SDL_Event& event) {
     if (event.type == SDL_MOUSEBUTTONDOWN) {
-        int x = (event.button.y - offsetY) / cellSize + 1;
-        int y = (event.button.x - offsetX) / cellSize + 1;
-
+        int x = 0, y = 0;
+        if(event.button.y - offsetY >= 0 && event.button.x - offsetX >= 0){
+            x = (event.button.y - offsetY) / cellSize + 1;
+            y = (event.button.x - offsetX) / cellSize + 1;
+        }
         if (x >= 1 && x <= rows && y >= 1 && y <= cols) {
             if (selectedX == -1 && selectedY == -1) {
                 if (board->getPokemonAt(x, y) != -1) {

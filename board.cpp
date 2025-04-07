@@ -3,7 +3,7 @@
 #include <ctime>
 
 Board::Board(int rows, int cols) : rows(rows), cols(cols), _x(-1), _y(-1) {
-    pokemons.resize(rows+2, std::vector<int>(cols+2, -1));
+    pokemons.resize(rows + 2, std::vector<int>(cols + 2, -1));
     initializeBoard();
 }
 

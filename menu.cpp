@@ -6,8 +6,12 @@ Menu::Menu(SDL_Renderer* renderer) : renderer(renderer), backgroundTexture(nullp
     backgroundTexture = Graphics::loadTexture(renderer, "assets/menu.png");
     pressAnyKeyTexture = Graphics::loadTexture(renderer, "assets/key.png");
 
+    if (!backgroundTexture) {
+        std::cout << "menu false\n";
+    }
+
     if (!pressAnyKeyTexture) {
-        std::cout << "key false";
+        std::cout << "key false\n";
     }
 }
 

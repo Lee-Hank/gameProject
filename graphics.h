@@ -4,18 +4,17 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#include <vector>
 
 class Graphics {
 public:
-    static bool init(const char* title, int width, int height);
-    static void clear();
-    static void present();
-    static void cleanup();
 
     static SDL_Texture* loadTexture(SDL_Renderer* renderer, const std::string& path);
 
-    static void renderTexture(SDL_Texture* texture, int x, int y, int w, int h);
-    static SDL_Renderer* getRenderer();
+    static void drawBorder(SDL_Renderer* renderer, int x, int y, int w, int h, SDL_Color color);
+
+    static void drawPath(SDL_Renderer* renderer, const std::vector<std::pair<int, int>>& path,
+                         int cellSize, int offsetX, int offsetY, SDL_Color color);
 
 private:
     static SDL_Window* window;

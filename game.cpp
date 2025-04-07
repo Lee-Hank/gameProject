@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include <SDL_image.h>
 #include <cstdio>
+#include <iostream>
 
 Game::Game() : window(nullptr), renderer(nullptr), boardView(nullptr), backgroundTexture(nullptr), isRunning(false) {}
 
@@ -9,17 +10,20 @@ Game::~Game() {}
 
 bool Game::init(const char* title, int width, int height) {
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) {
+        std::cout << "IMG_Init failed\n";
         return false;
     }
 
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     if (!window) {
+        std::cout << "SDL_CreateWindow failed\n";
         SDL_Quit();
         return false;
     }
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
+        std::cout << "SDL_CreateRenderer failed\n";
         SDL_DestroyWindow(window);
         SDL_Quit();
         return false;
@@ -47,6 +51,7 @@ bool Game::init(const char* title, int width, int height) {
 
     SDL_Surface* bgSurface = IMG_Load("assets/background.png");
     if (!bgSurface) {
+        std::cout << "background failed\n";
         return false;
     }
 
@@ -54,6 +59,7 @@ bool Game::init(const char* title, int width, int height) {
     SDL_FreeSurface(bgSurface);
 
     if (!backgroundTexture) {
+        std::cout << "background failed\n";
         return false;
     }
 
