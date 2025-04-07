@@ -21,10 +21,10 @@ public:
     int _x, _y;
 
     bool isBoardEmpty();
+    void initializeBoard();
 private:
     int rows, cols;
     std::vector<std::vector<int>> pokemons;
-    void initializeBoard();
 };
 
 #endif
