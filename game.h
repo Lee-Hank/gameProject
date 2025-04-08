@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include "BoardView.h"
 #include "Menu.h"
+#include <SDL_mixer.h>
 
 enum GameState { MENU, PLAYING };
 
@@ -16,6 +17,7 @@ private:
     SDL_Texture* backgroundTexture;
     bool isRunning;
     GameState gameState;
+    Mix_Music* backgroundMusic;
 
 public:
     Game();

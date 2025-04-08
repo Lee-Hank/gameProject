@@ -29,6 +29,19 @@ bool Game::init(const char* title, int width, int height) {
         return false;
     }
 
+     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cout << "Sound falsed\n";
+        return false;
+    }
+
+    backgroundMusic = Mix_LoadMUS("sound/1.mp3");
+    if (!backgroundMusic) {
+        std::cout << "Sound falsed\n";
+        return false;
+    }
+
+    Mix_PlayMusic(backgroundMusic, -1);
+
     Menu menu(renderer);
     bool inMenu = true;
     while (inMenu) {
@@ -57,7 +70,6 @@ bool Game::init(const char* title, int width, int height) {
 
     backgroundTexture = SDL_CreateTextureFromSurface(renderer, bgSurface);
     SDL_FreeSurface(bgSurface);
-
     if (!backgroundTexture) {
         std::cout << "background failed\n";
         return false;
@@ -107,6 +119,12 @@ void Game::cleanup() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 
+    if (backgroundMusic) {
+    Mix_FreeMusic(backgroundMusic);
+    backgroundMusic = nullptr;
+    }
+
+    Mix_CloseAudio();
     IMG_Quit();
     SDL_Quit();
 }

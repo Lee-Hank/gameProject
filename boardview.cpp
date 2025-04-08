@@ -52,7 +52,7 @@ void BoardView::loadTextures() {
 void BoardView::render() {
     if (gameState == WIN) {
         SDL_Texture* winTexture = Graphics::loadTexture(renderer, "assets/win.png");
-        SDL_Rect destRect = { offsetX, offsetY, cols * cellSize , rows * cellSize };
+        SDL_Rect destRect = {168, 87, 864, 576};
         SDL_RenderCopy(renderer, winTexture, nullptr, &destRect);
         SDL_DestroyTexture(winTexture);
 
@@ -66,7 +66,7 @@ void BoardView::render() {
         for (int j = 0; j < cols; ++j) {
             int pokemonID = board->getPokemonAt(i + 1, j + 1);
             if (pokemonID != -1) {
-                SDL_Rect destRect = { offsetX + j * cellSize, offsetY + i * cellSize, cellSize, cellSize };
+                SDL_Rect destRect = {offsetX + j * cellSize, offsetY + i * cellSize, cellSize, cellSize};
                 SDL_RenderCopy(renderer, textures[pokemonID], nullptr, &destRect);
             }
         }
@@ -87,7 +87,6 @@ void BoardView::render() {
     }
 }
 
-
 void BoardView::handleEvent(SDL_Event& event) {
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         int x = 0, y = 0;
@@ -104,9 +103,7 @@ void BoardView::handleEvent(SDL_Event& event) {
                     board->_y = y;
                 }
             } else {
-                if (board->getPokemonAt(x, y) != -1 &&
-                    board->getPokemonAt(board->_x, board->_y) == board->getPokemonAt(x, y) &&
-                    board->canConnect(board->_x, board->_y, x, y)) {
+                if (board->selectPokemon(x, y)) {
 
                     path = board->findPath(board->_x, board->_y, x, y);
                     pathStartTime = SDL_GetTicks();
@@ -128,6 +125,3 @@ void BoardView::handleEvent(SDL_Event& event) {
         }
     }
 }
-
-
-
