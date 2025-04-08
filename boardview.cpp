@@ -5,13 +5,10 @@ int rows = 8, cols = 12;
 BoardView::BoardView(SDL_Renderer* renderer) : renderer(renderer), selectedX(-1), selectedY(-1) {
     board = new Board(rows, cols);
     cellSize = 72;
-
     int screenWidth, screenHeight;
     SDL_GetRendererOutputSize(renderer, &screenWidth, &screenHeight);
-
     offsetX = (screenWidth - (cols * cellSize)) / 2;
     offsetY = (screenHeight - (rows * cellSize)) / 2;
-
     loadTextures();
 }
 
@@ -90,7 +87,7 @@ void BoardView::render() {
 void BoardView::handleEvent(SDL_Event& event) {
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         int x = 0, y = 0;
-        if(event.button.y - offsetY >= 0 && event.button.x - offsetX >= 0){
+        if (event.button.y - offsetY >= 0 && event.button.x - offsetX >= 0) {
             x = (event.button.y - offsetY) / cellSize + 1;
             y = (event.button.x - offsetX) / cellSize + 1;
         }
@@ -104,13 +101,10 @@ void BoardView::handleEvent(SDL_Event& event) {
                 }
             } else {
                 if (board->selectPokemon(x, y)) {
-
                     path = board->findPath(board->_x, board->_y, x, y);
                     pathStartTime = SDL_GetTicks();
-
                     board->removePokemon(x, y);
                     board->removePokemon(board->_x, board->_y);
-
                     board->_x = board->_y = -1;
                     selectedX = selectedY = -1;
 

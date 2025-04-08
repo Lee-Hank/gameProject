@@ -6,7 +6,7 @@
 #include "Menu.h"
 #include <SDL_mixer.h>
 
-enum GameState { MENU, PLAYING };
+enum GameState {MENU, PLAYING};
 
 class Game {
 private:

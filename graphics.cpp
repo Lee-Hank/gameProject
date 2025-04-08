@@ -9,7 +9,7 @@ SDL_Texture* Graphics::loadTexture(SDL_Renderer* renderer, const std::string& pa
 
 void Graphics::drawBorder(SDL_Renderer* renderer, int x, int y, int w, int h, SDL_Color color) {
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_Rect rect = { x, y, w, h };
+    SDL_Rect rect = {x, y, w, h};
     SDL_RenderDrawRect(renderer, &rect);
 }
 

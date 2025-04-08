@@ -38,13 +38,10 @@ void Menu::update() {
 
 void Menu::render() {
     SDL_RenderClear(renderer);
-
     SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
-
     SDL_SetTextureAlphaMod(pressAnyKeyTexture, alpha);
     SDL_Rect textRect = { 400, 570, 400, 100 };
     SDL_RenderCopy(renderer, pressAnyKeyTexture, NULL, &textRect);
-
     SDL_RenderPresent(renderer);
 }
 
