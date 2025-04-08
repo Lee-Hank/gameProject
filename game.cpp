@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Menu.h"
 #include <SDL_image.h>
-#include <cstdio>
 #include <iostream>
 
 Game::Game() : window(nullptr), renderer(nullptr), boardView(nullptr), backgroundTexture(nullptr), isRunning(false) {}
